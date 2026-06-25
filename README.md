@@ -1,102 +1,95 @@
-# Project-101 : Kittens Carousel Static Website deployed on AWS EC2 using Cloudformation
+# AWS EC2 Static Website Deployment with CloudFormation
 
-## Description
-Kittens Carousel is a static website application deployed with Apache Web Server on AWS Elastic Compute Cloud (EC2) Instance using AWS Cloudformation Service. 
+## Overview
 
-## Problem Statement
+This project demonstrates how to deploy a static website on an Amazon EC2 instance using **AWS CloudFormation** for infrastructure provisioning and **Apache HTTP Server** for web hosting.
 
-![Project_101](Pro_Project_101.png)
+The infrastructure is created automatically using an Infrastructure as Code (IaC) approach, while the application files are deployed through an EC2 User Data script during instance initialization.
 
-- Your company has recently started a web application project that will serve as an attraction point for pet lovers. As a first step of the project, developers in your team have prepared a preliminary design of kittens carousel application and pushed necessary files for the project to the repository on Github. 
+---
 
-- Your task is to show the how the design of application looks as static web page in the development environment. Thus, you need to deploy the web application using the `index.html` and an images given within the `static-web` folder. Note the followings for your web application.
-   
-   - User should face first with `index.html` when web app started.
+## Architecture
 
-   - Application should be deployed on Apache Web Server.
+* AWS CloudFormation
+* Amazon EC2 (Amazon Linux 2)
+* Apache HTTP Server
+* EC2 User Data
+* Security Groups
+* Static HTML/CSS Website
 
-   - Application should be deployed in the development environment on AWS EC2 Instance using AWS Cloudformation Service. In the development environment, you can configure your Cloudformation template using the followings,
+---
 
-      - The application stack should be created with new AWS resources. 
-   
-      - The application should run on Amazon Linux 2 EC2 Instance
+## Project Structure
 
-      - EC2 Instance type can be configured as `t2.micro`.
-
-      - Instance launched by Cloudformation should be tagged `Web Server of StackName` 
-
-      - The Web Application should be accessible via web browser from anywhere.
-
-      - The Application files should be downloaded from Github repo and deployed on EC2 Instance using user data script within cloudformation template. 
-
-      - Kittens Carousel Application Website URL should be given as output by Cloudformation Service, after the stack created.
-
-## Project Skeleton 
-
-```
-101-kittens-carousel-static-website-ec2 (folder)
-|
-|----readme.md         # Given to the students (Definition of the project)          
-|----cfn-template.yml  # To be delivered by students (Cloudformation template)
-|----static-web
-        |----index.html  # Given to the students (HTML file)
-        |----cat0.jpg    # Given to the students (image file)
-        |----cat1.jpg    # Given to the students (image file)
-        |----cat2.jpg    # Given to the students (image file)
+```text
+.
+├── kittens-carousel-static-website.yml
+├── static-web
+│   ├── index.html
+│   ├── cat0.jpg
+│   ├── cat1.jpg
+│   ├── cat2.jpg
+│   └── cat3.png
+├── project-101-snapshot.png
+├── Pro_Project_101.png
+└── README.md
 ```
 
-## Expected Outcome
+---
 
-![Project 101 : Kittens Carousel Application Snapshot](./project-101-snapshot.png)
+## Features
 
-### At the end of the project, following topics are to be covered;
+* Infrastructure provisioning using AWS CloudFormation
+* Automatic EC2 instance creation
+* Apache Web Server installation via User Data
+* Static website deployment during instance initialization
+* Public HTTP access through Security Groups
+* Infrastructure as Code (IaC) approach
 
-- Apache Web Server Installation on Linux
+---
 
-- Static Website Deployment
+## Technologies Used
 
-- Bash scripting
+* AWS CloudFormation
+* Amazon EC2
+* Amazon Linux 2
+* Apache HTTP Server
+* Bash
+* HTML
+* Git & GitHub
 
-- AWS EC2 Service
+---
 
-- AWS Security Groups Configuration
+## Deployment
 
-- AWS Cloudformation Service
+1. Launch the CloudFormation template.
+2. Create the required AWS resources.
+3. Wait until the stack reaches **CREATE_COMPLETE**.
+4. Open the EC2 Public DNS or Public IP address in your browser.
+5. Verify that the static website is accessible.
 
-- AWS Cloudformation Template Design
+---
 
-- Git & Github for Version Control System
+## Project Preview
 
-### At the end of the project, students will be able to;
+![Application Screenshot](project-101-snapshot.png)
 
-- install Apache Web Server on Amazon Linux 2.
+---
 
-- improve bash scripting skills using `user data` section in Cloudformation to install and setup web application on EC2 Instance.
+## Learning Outcomes
 
-- configure AWS EC2 Instance and Security Groups.
+This project demonstrates practical experience with:
 
-- configure Cloudformation template to use AWS Resources.
+* Infrastructure as Code (IaC)
+* AWS CloudFormation
+* EC2 provisioning
+* Apache Web Server configuration
+* Linux User Data automation
+* Static website deployment
+* Git version control
 
-- use AWS Cloudformation Service to launch stacks.
+---
 
-- use git commands (push, pull, commit, add etc.) and Github as Version Control System.
+## Author
 
-## Steps to Solution
-  
-- Step 1: Download or clone project definition from `clarusway` repo on Github 
-
-- Step 2: Create project folder for local public repo on your pc
-
-- Step 3: Prepare a cloudformation template to deploy your app on EC2 Instance
-
-- Step 4: Push your application into your own public repo on Github
-
-- Step 5: Deploy your application on AWS Cloud using Cloudformation template to showcase your app within your team.
-
-## Notes
-
-- Customize the application by hard-coding your name instead of `student_name` within `index.html`.
-
-## Resources
-
-- [AWS Cloudformation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+Eyüp İlhan
