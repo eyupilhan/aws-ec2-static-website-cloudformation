@@ -63,10 +63,10 @@ The infrastructure is created automatically using an Infrastructure as Code (IaC
 ## Deployment
 
 1. Deploy the CloudFormation template.
-2. AWS provisions the required infrastructure.
-3. EC2 installs Apache HTTP Server using the User Data script.
-4. Static website files are downloaded and deployed automatically.
-5. Access the application using the EC2 Public DNS or Public IP.
+2. AWS provisions the required infrastructure automatically.
+3. Apache HTTP Server is installed using the EC2 User Data script.
+4. Static website files are deployed during instance initialization.
+5. Access the application using the EC2 Public DNS or Public IP address.
 
 ---
 
