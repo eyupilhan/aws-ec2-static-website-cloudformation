@@ -10,21 +10,21 @@ The infrastructure is created automatically using an Infrastructure as Code (IaC
 
 ## Architecture Components
 
-- AWS CloudFormation
-- Amazon EC2 (Amazon Linux 2)
-- Apache HTTP Server
-- EC2 User Data
-- Security Groups
-- Static HTML Website
+* AWS CloudFormation
+* Amazon EC2 (Amazon Linux 2)
+* Apache HTTP Server
+* EC2 User Data
+* Security Groups
+* Static HTML/CSS Website
 
 ---
 
-## Project Structure
+## Repository Structure
 
 ```text
 .
 ├── kittens-carousel-static-website.yml
-├── static-web
+├── static-web/
 │   ├── index.html
 │   ├── cat0.jpg
 │   ├── cat1.jpg
@@ -48,6 +48,29 @@ The infrastructure is created automatically using an Infrastructure as Code (IaC
 
 ---
 
+## Deployment Workflow
+
+```text
+CloudFormation Template
+      │
+      ▼
+EC2 Instance Provisioning
+      │
+      ▼
+User Data Script Execution
+      │
+      ▼
+Apache Web Server Installation
+      │
+      ▼
+Static Website Deployment
+      │
+      ▼
+Public Website Access
+```
+
+---
+
 ## Technologies Used
 
 * AWS CloudFormation
@@ -60,50 +83,27 @@ The infrastructure is created automatically using an Infrastructure as Code (IaC
 
 ---
 
-## Deployment
-
-1. Deploy the CloudFormation template.
-2. AWS provisions the required infrastructure automatically.
-3. Apache HTTP Server is installed using the EC2 User Data script.
-4. Static website files are deployed during instance initialization.
-5. Access the application using the EC2 Public DNS or Public IP address.
-
----
-
 ## Project Preview
 
 ![Application Screenshot](project-101-snapshot.png)
-
-## Architecture Diagram
-
-![Architecture](Pro_Project_101.png)
-
----
-
-## Repository Highlights
-
-- Infrastructure as Code with AWS CloudFormation
-- Automated EC2 provisioning
-- Apache Web Server configuration via User Data
-- Static website deployment
-- Git version control
 
 ---
 
 ## Learning Outcomes
 
-This project demonstrates practical experience with:
+Through this project, I practiced:
 
-* Infrastructure as Code (IaC)
-* AWS CloudFormation
+* Infrastructure as Code with AWS CloudFormation
 * EC2 provisioning
-* Apache Web Server configuration
-* Linux User Data automation
-* Static website deployment
-* Git version control
+* Security Group configuration
+* Apache Web Server setup on Linux
+* EC2 User Data automation
+* Static website deployment on AWS
 
 ---
 
-## Author
+## Notes
 
-Eyüp İlhan
+This project is intended for learning and portfolio demonstration purposes.
+
+It is not designed for production use without additional improvements such as HTTPS, domain configuration, automated security hardening, and monitoring.
