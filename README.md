@@ -8,14 +8,14 @@ The infrastructure is created automatically using an Infrastructure as Code (IaC
 
 ---
 
-## Architecture
+## Architecture Components
 
-* AWS CloudFormation
-* Amazon EC2 (Amazon Linux 2)
-* Apache HTTP Server
-* EC2 User Data
-* Security Groups
-* Static HTML/CSS Website
+- AWS CloudFormation
+- Amazon EC2 (Amazon Linux 2)
+- Apache HTTP Server
+- EC2 User Data
+- Security Groups
+- Static HTML Website
 
 ---
 
@@ -62,17 +62,31 @@ The infrastructure is created automatically using an Infrastructure as Code (IaC
 
 ## Deployment
 
-1. Launch the CloudFormation template.
-2. Create the required AWS resources.
-3. Wait until the stack reaches **CREATE_COMPLETE**.
-4. Open the EC2 Public DNS or Public IP address in your browser.
-5. Verify that the static website is accessible.
+1. Deploy the CloudFormation template.
+2. AWS provisions the required infrastructure.
+3. EC2 installs Apache HTTP Server using the User Data script.
+4. Static website files are downloaded and deployed automatically.
+5. Access the application using the EC2 Public DNS or Public IP.
 
 ---
 
 ## Project Preview
 
 ![Application Screenshot](project-101-snapshot.png)
+
+## Architecture Diagram
+
+![Architecture](Pro_Project_101.png)
+
+---
+
+## Repository Highlights
+
+- Infrastructure as Code with AWS CloudFormation
+- Automated EC2 provisioning
+- Apache Web Server configuration via User Data
+- Static website deployment
+- Git version control
 
 ---
 
