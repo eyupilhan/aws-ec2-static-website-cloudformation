@@ -11,7 +11,7 @@ The infrastructure is created automatically using an Infrastructure as Code (IaC
 ## Architecture Components
 
 * AWS CloudFormation
-* Amazon EC2 (Amazon Linux 2)
+* Amazon EC2 (Amazon Linux 2023)
 * Apache HTTP Server
 * EC2 User Data
 * Security Groups
@@ -75,7 +75,7 @@ Public Website Access
 
 * AWS CloudFormation
 * Amazon EC2
-* Amazon Linux 2
+* Amazon Linux 2023
 * Apache HTTP Server
 * Bash
 * HTML

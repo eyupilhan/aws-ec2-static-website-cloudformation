@@ -1,51 +1,50 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: |
-  This CloudFormation Template was written for running Kittens Carousel Static Website on EC2. Kittens Carousel Static Website will be deployed on Amazon Linux 2 (ami-02f3f602d23f1659d) EC2 Instance with custom security group which allows http connections on port 80 and ssh port 22 from anywhere. Kittens Carousel Static Website is downloaded from my Public Github repository, then deployed on Apache Web Server. Rihanna says Work! Work! Work!
+  This CloudFormation template deploys the Kittens Carousel static website on an Amazon Linux 2023 EC2 instance using the latest AL2023 AMI resolved through AWS Systems Manager Parameter Store. A custom security group allows HTTP traffic on port 80. The website files are downloaded from this GitHub repository and served by Apache HTTP Server.
+
+Parameters:
+  LatestAmiId:
+    Description: Latest Amazon Linux 2023 AMI
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
 
 Resources:
   WebServerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Enable HTTP for Apache Web Server and SSH for secure connection
+      GroupDescription: Enable HTTP for Apache Web Server
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 22
-          ToPort: 22
-          CidrIp: 0.0.0.0/0
 
   WebServerHost:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId: ami-02f3f602d23f1659d
+      ImageId: !Ref LatestAmiId
       InstanceType: t2.micro
-      KeyName: Maymuncuk
       SecurityGroupIds:
         - !Ref WebServerSecurityGroup
       Tags:
         - Key: Name
           Value: !Sub Web Server of ${AWS::StackName} Stack
-      UserData: 
+      UserData:
         Fn::Base64:
             #! /bin/bash
-            yum update -y
-            yum install httpd -y
-            FOLDER="https://raw.githubusercontent.com/T01-2133/My-Projects/main/Project06-AWS-Kittens-Carousel-Static-Website-EC2/static-web"
+            dnf update -y
+            dnf install -y httpd wget
+            FOLDER="https://raw.githubusercontent.com/eyupilhan/aws-ec2-static-website-cloudformation/main/static-web"
             cd /var/www/html"
             wget ${FOLDER}/index.html
             wget ${FOLDER}/cat0.jpg
             wget ${FOLDER}/cat1.jpg
             wget ${FOLDER}/cat2.jpg
             wget ${FOLDER}/cat3.png
-            systemctl start httpd
-            systemctl enable httpd
-  
+            systemctl enable --now httpd
 Outputs:
   WebsiteURL:
-    Value: !Sub 
+    Value: !Sub
       - http://${PublicAddress}
       - PublicAddress: !GetAtt WebServerHost.PublicDnsName
     Description: Kittens Carousel Application URL
